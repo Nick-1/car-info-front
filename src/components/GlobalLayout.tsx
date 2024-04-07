@@ -4,6 +4,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
+import InsightsIcon from '@mui/icons-material/Insights';
 
 interface LayoutProps {
   children: ReactNode;
@@ -15,16 +16,16 @@ const GlobalLayout: React.FC<LayoutProps> = ({ children }) => {
       <CssBaseline />
       <AppBar position="fixed">
         <Toolbar>
-          <Typography variant="h6" noWrap>
-            Global Statistic
+          <Typography variant="h5" noWrap>
+            <InsightsIcon /> Global Statistic
           </Typography>
         </Toolbar>
       </AppBar>
       <Box
         component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3, mt: 8 }}
+        sx={{ bgcolor: 'background.default', p: 3, mt: 5 }}
       >
-        {children} {/* Контент сторінки */}
+        {children}
       </Box>
     </Box>
   );
