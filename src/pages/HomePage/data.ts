@@ -19,6 +19,7 @@ export const data: Vehicle[] = [
     numberOfFavorites: 3454,
     numberOfReviews: 128,
     isMyCar: false,
+    state: 'Florida',
   },
   {
     id: 2563747,
@@ -38,6 +39,7 @@ export const data: Vehicle[] = [
     numberOfFavorites: 36,
     numberOfReviews: 6,
     isMyCar: true,
+    state: 'Florida',
   },
   {
     id: 2556146,
@@ -57,6 +59,7 @@ export const data: Vehicle[] = [
     numberOfFavorites: 66,
     numberOfReviews: 7,
     isMyCar: true,
+    state: 'Florida',
   },
   {
     id: 2577104,
@@ -76,6 +79,7 @@ export const data: Vehicle[] = [
     numberOfFavorites: 32,
     numberOfReviews: 4,
     isMyCar: true,
+    state: 'Florida',
   },
   {
     id: 2578088,
@@ -95,6 +99,7 @@ export const data: Vehicle[] = [
     numberOfFavorites: 19,
     numberOfReviews: 4,
     isMyCar: true,
+    state: 'Florida',
   },
   {
     id: 2579777,
@@ -114,6 +119,7 @@ export const data: Vehicle[] = [
     numberOfFavorites: 107,
     numberOfReviews: 4,
     isMyCar: true,
+    state: 'Florida',
   },
   {
     id: 7090871,
@@ -133,6 +139,7 @@ export const data: Vehicle[] = [
     numberOfFavorites: 2100,
     numberOfReviews: 85,
     isMyCar: false,
+    state: 'Florida',
   },
   {
     id: 8100982,
@@ -146,12 +153,13 @@ export const data: Vehicle[] = [
     deliveryPrice: { price: 75, freeIf: 'Free delivery to select locations for trips of 4 days or longer' },
     available: 14,
     notAvailable: 6,
-    activeListing: true,
+    activeListing: false,
     color: 'GREEN',
     tripCount: 320,
     numberOfFavorites: 2900,
     numberOfReviews: 110,
     isMyCar: false,
+    state: 'Florida',
   },
   {
     id: 9111093,
@@ -165,12 +173,13 @@ export const data: Vehicle[] = [
     deliveryPrice: { price: 105, freeIf: 'Free delivery to select locations for trips of 4 days or longer' },
     available: 16,
     notAvailable: 4,
-    activeListing: true,
+    activeListing: false,
     color: 'GREY',
     tripCount: 275,
     numberOfFavorites: 2500,
     numberOfReviews: 100,
     isMyCar: false,
+    state: 'Florida',
   },
   {
     id: 10120104,
@@ -184,12 +193,13 @@ export const data: Vehicle[] = [
     deliveryPrice: { price: 90, freeIf: 'Free delivery to select locations for trips of 3 days or longer' },
     available: 18,
     notAvailable: 2,
-    activeListing: true,
+    activeListing: false,
     color: 'PURPLE',
     tripCount: 190,
     numberOfFavorites: 2000,
     numberOfReviews: 80,
     isMyCar: false,
+    state: 'Florida',
   },
   {
     id: 11131115,
@@ -203,11 +213,12 @@ export const data: Vehicle[] = [
     deliveryPrice: { price: 100, freeIf: 'Free delivery to select locations for trips of 4 days or longer' },
     available: 9,
     notAvailable: 5,
-    activeListing: true,
+    activeListing: false,
     color: 'METALLIC RED',
     tripCount: 100,
     numberOfFavorites: 1500,
     numberOfReviews: 50,
     isMyCar: false,
+    state: 'Florida',
   }
 ]

@@ -1,7 +1,12 @@
 import React from 'react';
 import Box from "@mui/material/Box";
-import {DataGrid, gridClasses, GridColDef, GridRenderCellParams, GridRowSpacingParams} from "@mui/x-data-grid";
-import Typography from "@mui/material/Typography";
+import {
+  DataGrid,
+  gridClasses,
+  GridColDef,
+  GridRenderCellParams,
+  GridRowSpacingParams,
+} from "@mui/x-data-grid";
 import {Avatar, Link, Tooltip} from "@mui/material";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
@@ -25,6 +30,7 @@ export interface Vehicle {
   numberOfFavorites: number,
   numberOfReviews: number,
   isMyCar: boolean,
+  state: string,
 }
 
 interface vehicleTableProps {
@@ -70,6 +76,9 @@ const VehicleTable: React.FC<vehicleTableProps> = ({ data }) => {
         <span>{params.row.dayPrice.price}</span>
       </Tooltip>
     ),
+    valueGetter: (params: any) => {
+      return params.price
+    },
   }
 
   const weekPriceColProps = {
@@ -78,6 +87,9 @@ const VehicleTable: React.FC<vehicleTableProps> = ({ data }) => {
         <span>{params.row.weekPrice.price}</span>
       </Tooltip>
     ),
+    valueGetter: (params: any) => {
+      return params.price
+    },
   }
 
   const monthPriceColProps = {
@@ -86,6 +98,9 @@ const VehicleTable: React.FC<vehicleTableProps> = ({ data }) => {
         <span>{params.row.monthPrice.price}</span>
       </Tooltip>
     ),
+    valueGetter: (params: any) => {
+      return params.price
+    },
   }
 
   const deliveryPriceColProps = {
@@ -108,6 +123,9 @@ const VehicleTable: React.FC<vehicleTableProps> = ({ data }) => {
 
       return <span>{params.row.car.name}</span>
     },
+    valueGetter: (params: any) => {
+      return params.name
+    },
   }
 
   const isMyCarColProps = {
@@ -123,8 +141,8 @@ const VehicleTable: React.FC<vehicleTableProps> = ({ data }) => {
   }
 
   const columns: GridColDef[] = [
-    { field: 'photo', headerName: 'Фото', ...photoColProps, },
-    { field: 'car', headerName: 'Модель', ...carColProps },
+    { field: 'photo', headerName: 'Фото', ...photoColProps},
+    { field: 'car', headerName: 'Модель', ...carColProps, },
     { field: 'year', headerName: 'Рік', },
     { field: 'isMyCar', headerName: 'Наша машина', ...isMyCarColProps},
     { field: 'price', headerName: 'Ціна', },
@@ -139,20 +157,14 @@ const VehicleTable: React.FC<vehicleTableProps> = ({ data }) => {
     { field: 'tripCount', headerName: 'Поїздки', },
     { field: 'numberOfFavorites', headerName: 'Кількість лайків', },
     { field: 'numberOfReviews', headerName: 'Кількість оцінок', },
+    { field: 'state', headerName: 'Штат', },
   ];
   return (
     <>
-      <Typography
-        variant="h4"
-        component="h4"
-        sx={{ textAlign: 'center', mt: 3, md: 3, mb: 2 }}
-      >
-        Статистика хоста
-      </Typography>
-
       <Box sx={{
         height: 500,
         width: '90%',
+        mt: 3,
       }}>
         <DataGrid
           rows={data}
