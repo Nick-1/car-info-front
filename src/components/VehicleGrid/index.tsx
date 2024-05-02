@@ -10,31 +10,10 @@ import {
 import {Avatar, Link, Tooltip} from "@mui/material";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
-
-
-export interface Vehicle {
-  id: number,
-  photo: string,
-  car: { name: string, url: string | null },
-  year: number,
-  price: number,
-  dayPrice: { price: number, discount: number },
-  weekPrice: { price: number, discount: number },
-  monthPrice: { price: number, discount: number },
-  deliveryPrice: { price: number, freeIf: string },
-  available: number,
-  notAvailable: number,
-  activeListing: boolean,
-  color: string,
-  tripCount: number,
-  numberOfFavorites: number,
-  numberOfReviews: number,
-  isMyCar: boolean,
-  state: string,
-}
+import {VehicleGrid} from "./toGridMapper.ts";
 
 interface vehicleTableProps {
-  data: Vehicle[]
+  data: VehicleGrid[]
 }
 
 const VehicleTable: React.FC<vehicleTableProps> = ({ data }) => {
@@ -151,7 +130,6 @@ const VehicleTable: React.FC<vehicleTableProps> = ({ data }) => {
     { field: 'monthPrice', headerName: 'Ціна за 1 місяць', ...monthPriceColProps },
     { field: 'deliveryPrice', headerName: 'Ціна доставки', ...deliveryPriceColProps },
     { field: 'notAvailable', headerName: 'Була зайнята', },
-    { field: 'available', headerName: 'Була вільна', },
     { field: 'color', headerName: 'Колір', },
     { field: 'activeListing', headerName: 'Лістинг активний', ...activeListingColProps},
     { field: 'tripCount', headerName: 'Поїздки', },

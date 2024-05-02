@@ -1,4 +1,4 @@
-import {Vehicle} from "../../components/VehicleGrid.tsx";
+import {Vehicle} from "../../components/VehicleGrid";
 
 export const data: Vehicle[] = [
   {
