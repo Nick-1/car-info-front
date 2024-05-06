@@ -9,7 +9,7 @@ const HomePage = () => {
 
   useEffect(() => {
     console.log('Effect is running');
-    api.get<any>('http://localhost:8005/api/v1/vehicle/statistic?hostId=4881621&from=2024-04-01&to=2024-05-01')
+    api.get<any>('http://localhost:8005/api/v1/vehicle/statistic?hostId=4881621&from=2024-05-01&to=2024-05-31')
       .then(response => {
         setData(response.data);
         setIsLoading(false);
@@ -24,8 +24,6 @@ const HomePage = () => {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
-
-  console.info('data---', data);
 
   return (
     <>
