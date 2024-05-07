@@ -3,8 +3,10 @@ import { Button, TextField, Container, Box, Typography } from '@mui/material';
 import axios from 'axios';
 
 interface LoginFormProps {
-  onLoginSuccess: (token: string) => void; // Функція, яка викликається при успішному вході
+  onLoginSuccess: (token: string) => void;
 }
+
+const baseNestUrl = import.meta.env.VITE_BASE_NEST_URL;
 
 const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState<string>('');
@@ -15,7 +17,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
     event.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8005/auth/login', {
+      const response = await axios.post(`${baseNestUrl}/auth/login`, {
         username,
         password
       });
