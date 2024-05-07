@@ -9,7 +9,7 @@ const HomePage = () => {
 
   useEffect(() => {
     console.log('Effect is running');
-    api.get<any>('http://localhost:8005/api/v1/vehicle/statistic?hostId=4881621&from=2024-05-01&to=2024-05-31')
+    api.get<any>('/api/v1/vehicle/statistic?hostId=4881621&from=2024-05-01&to=2024-05-31')
       .then(response => {
         setData(response.data);
         setIsLoading(false);

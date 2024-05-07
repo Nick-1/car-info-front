@@ -9,7 +9,7 @@ export const useVerifyToken = (token: string | null) => {
   useEffect(() => {
     const verifyToken = async () => {
       try {
-        const response = await api.post('http://localhost:8005/auth/validate', { token });
+        const response = await api.post('/auth/validate', { token });
         setIsValid(response.data.isValid);
       } catch (error) {
         console.error("Error verifying token:", error);
