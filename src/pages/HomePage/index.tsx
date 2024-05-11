@@ -8,7 +8,6 @@ const HomePage = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    console.log('Effect is running');
     api.get<any>('/api/v1/vehicle/statistic?hostId=4881621&from=2024-05-01&to=2024-05-31')
       .then(response => {
         setData(response.data);
@@ -27,7 +26,7 @@ const HomePage = () => {
 
   return (
     <>
-       <VehicleGrid data={mappedData} />
+      <VehicleGrid data={mappedData} />
     </>
   );
 };

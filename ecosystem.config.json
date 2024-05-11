@@ -1,0 +1,13 @@
+{
+  "apps": [
+    {
+      "name": "car_info_front",
+      "script": "npm",
+      "args": "run start",
+      "env": {
+        "NODE_ENV": "production",
+        "VITE_BASE_NEST_URL": "http://localhost:8005"
+      }
+    }
+  ]
+}
