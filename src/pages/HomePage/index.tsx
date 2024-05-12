@@ -20,6 +20,8 @@ const HomePage = () => {
       setData(data);
       setIsLoading(false);
     } catch (error) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       setError(error.message);
       setIsLoading(false);
     }
@@ -32,7 +34,7 @@ const HomePage = () => {
 
   const handleEndDateChange = async (date: string | null): Promise<void> => {
     setEndDate(date);
-    console.log("End Date Changed: ", date);
+    console.log("End Date Changed: ", date, endDate);
     await getData(KYRYLO_HOST_ID, startDate, date);
   };
 

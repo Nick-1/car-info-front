@@ -12,6 +12,8 @@ export const apiGetStatisticByPeriodAndHostId = async (
     );
     return response.data;
   } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     throw new Error(error.response?.data?.message || error.message);
   }
 }
