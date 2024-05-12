@@ -1,7 +1,9 @@
+import DateRangePicker from "../../components/DateRangePicker";
+
 const ContactPage = () => {
   return (
     <div>
-      Contact page!
+      <DateRangePicker />
     </div>
   );
 };

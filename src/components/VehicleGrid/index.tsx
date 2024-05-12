@@ -140,8 +140,8 @@ const VehicleTable: React.FC<vehicleTableProps> = ({ data }) => {
   return (
     <>
       <Box sx={{
-        height: 500,
-        width: '90%',
+        height: 600,
+        width: '100%',
         mt: 3,
       }}>
         <DataGrid
