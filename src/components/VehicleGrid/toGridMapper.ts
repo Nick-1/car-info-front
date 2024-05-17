@@ -17,6 +17,7 @@ export interface VehicleDto {
   history_prices: HistoryPrice[],
   isMyCar: boolean,
   location: Location,
+  listingCreatedTime: string,
   freeDeliveryPeriodDescription: string,
 }
 
@@ -56,6 +57,7 @@ export interface VehicleGrid {
   numberOfReviews: number,
   isMyCar: boolean,
   state: string,
+  listingCreatedTime: string,
 }
 
 export const toVehicleGrid = (vehiclesDto: VehicleDto[]): VehicleGrid[] => {
@@ -80,6 +82,7 @@ export const toVehicleGrid = (vehiclesDto: VehicleDto[]): VehicleGrid[] => {
      numberOfReviews: vehicleDto.numberOfReviews,
      isMyCar: vehicleDto.isMyCar,
      state: vehicleDto.location.state,
+     listingCreatedTime: getDateOnly(vehicleDto.listingCreatedTime),
    }
  })
 }
@@ -90,4 +93,8 @@ function calculateDiscountedPrice(price: number, discountPercentage: number): nu
   }
 
   return Math.round(price * (1 - discountPercentage / 100));
+}
+
+function getDateOnly(dateString: string): string {
+  return dateString.split('T')[0];
 }

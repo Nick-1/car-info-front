@@ -130,6 +130,7 @@ const VehicleTable: React.FC<vehicleTableProps> = ({ data }) => {
     { field: 'monthPrice', headerName: 'Ціна за 1 місяць', ...monthPriceColProps },
     { field: 'deliveryPrice', headerName: 'Ціна доставки', ...deliveryPriceColProps },
     { field: 'notAvailable', headerName: 'Була зайнята', },
+    { field: 'listingCreatedTime', headerName: 'Дата створення лістингу', },
     { field: 'color', headerName: 'Колір', },
     { field: 'activeListing', headerName: 'Лістинг активний', ...activeListingColProps},
     { field: 'tripCount', headerName: 'Поїздки', },
