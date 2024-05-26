@@ -4,6 +4,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import InsightsIcon from '@mui/icons-material/Insights';
+import {Button} from "@mui/material";
+import { Link } from 'react-router-dom';
 
 interface LayoutProps {
   children: ReactNode;
@@ -14,9 +16,15 @@ const GlobalLayout: React.FC<LayoutProps> = ({ children }) => {
     <>
       <AppBar position="fixed">
         <Toolbar>
-          <Typography variant="h5" noWrap>
+          <Typography variant="h5" noWrap sx={{ flexGrow: 1 }}>
             <InsightsIcon /> Global Statistic
           </Typography>
+          <Button color="inherit" component={Link} to="/" sx={{ marginLeft: 'auto' }}>
+            Хост
+          </Button>
+          <Button color="inherit" component={Link} to="/group">
+            Група №1
+          </Button>
         </Toolbar>
       </AppBar>
       <Box

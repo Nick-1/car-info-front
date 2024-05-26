@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import {AuthProvider} from "./contexts/AuthContext.tsx";
 import PrivateRoute from "./components/PrivateRoute";
+import GroupPage from "./pages/GroupPage";
 
 function App() {
   return (
@@ -13,6 +14,10 @@ function App() {
             <Route path="/" element={
               <PrivateRoute>
                 <HomePage />
+              </PrivateRoute>} />
+            <Route path="/group" element={
+              <PrivateRoute>
+                <GroupPage />
               </PrivateRoute>} />
             <Route path="/login" element={<LoginPage />} />
           </Routes>
