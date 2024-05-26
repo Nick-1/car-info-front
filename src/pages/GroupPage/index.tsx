@@ -35,11 +35,11 @@ const GroupPage = () => {
   const handleEndDateChange = async (date: string | null): Promise<void> => {
     setEndDate(date);
     console.log("End Date Changed: ", date, endDate);
-    await getData(5, startDate, date);
+    await getData(1, startDate, date);
   };
 
   const setDefaultPeriod = async (): Promise<void> => {
-    await getData(5, DEFAULT_START_DATE, DEFAULT_END_DATE);
+    await getData(1, DEFAULT_START_DATE, DEFAULT_END_DATE);
   }
 
   useEffect(() => {
