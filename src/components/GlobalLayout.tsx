@@ -25,6 +25,9 @@ const GlobalLayout: React.FC<LayoutProps> = ({ children }) => {
           <Button color="inherit" component={Link} to="/group">
             Група №1
           </Button>
+          <Button color="inherit" component={Link} to="/group-2">
+            Група №2
+          </Button>
         </Toolbar>
       </AppBar>
       <Box
