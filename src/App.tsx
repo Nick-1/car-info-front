@@ -4,7 +4,6 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import {AuthProvider} from "./contexts/AuthContext.tsx";
 import PrivateRoute from "./components/PrivateRoute";
-import GroupPage from "./pages/GroupPage";
 import GroupPage_2 from "./pages/GroupPage_2";
 import DailyPricingPage from './pages/DailyPricingPage';
 

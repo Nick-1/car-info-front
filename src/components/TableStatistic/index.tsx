@@ -25,6 +25,7 @@ const TableStatistic = (props: TableStatisticProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [startDate, setStartDate] = useState<string | null>(null);
+  // @ts-ignore
   const [endDate, setEndDate] = useState<string | null>(null);
 
   const getData = async (

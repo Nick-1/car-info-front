@@ -16,7 +16,7 @@ const DailyPricingPage: React.FC = () => {
     const [selectedVehicleGroup, setSelectedVehicleGroup] = useState<number>(0);
     const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
     const [selectedMonth, setSelectedMonth] = useState<number>(new Date().getMonth() + 1);
-    const [groupList, setGroupList] = useState<[{ name: string, id: number }]>([]);
+    const [groupList, setGroupList] = useState<[{ name: string, id: number }]>([{name: 'default', id: 1}]);
 
     const updateFilters = async (categoryId: number) => {
         const rawGroupList = await ApiGetGroupListByCategoryId(categoryId);
