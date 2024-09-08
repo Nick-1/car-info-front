@@ -45,12 +45,11 @@ const TableStatistic = (props: TableStatisticProps) => {
 
   const handleStartDateChange = (date: string | null): void => {
     setStartDate(date);
-    console.log("Start Date Changed: ", date);
   };
 
   const handleEndDateChange = async (date: string | null): Promise<void> => {
     setEndDate(date);
-    console.log("End Date Changed: ", date, endDate);
+
     await getData(id, startDate, date);
   };
 

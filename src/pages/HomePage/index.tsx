@@ -8,9 +8,7 @@ const HomePage = () => {
     apiGetDataMethod: apiGetStatisticByPeriodAndHostId,
   }
 
-  return (
-    <TableStatistic config={config}/>
-  )
+  return <TableStatistic config={config}/>
 };
 
 export default HomePage;
