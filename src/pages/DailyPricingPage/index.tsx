@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import GlobalLayout from '../../components/GlobalLayout.tsx';
 import DailyPricingGrid from '../../components/DailyPricing';
-import {SelectChangeEvent, Typography} from '@mui/material';
+import {Checkbox, FormControlLabel, SelectChangeEvent, Typography} from '@mui/material';
 import VehicleGroupFilter from '../../components/Filters/VehicleGroupFilter.tsx';
 import YearFilter from '../../components/Filters/YearFilter.tsx';
 import MonthsFilter from '../../components/Filters/MonthsFilter.tsx';
@@ -9,6 +9,7 @@ import {ApiGetGroupListByCategoryId} from '../../api/endpoints/api-get-group-lis
 import {ApiGetDailyPricingByGroupId} from '../../api/endpoints/api-get-daily-pricing-by-groupId.ts';
 import AverageGrid from '../../components/AverageGrid';
 import BarChartAverage from '../../components/BarChartAverage';
+import './dailyPricingPage.scss';
 
 const DailyPricingPage: React.FC = () => {
     const CATEGORY_ID = 2;
@@ -16,6 +17,7 @@ const DailyPricingPage: React.FC = () => {
     const [selectedVehicleGroup, setSelectedVehicleGroup] = useState<number>(0);
     const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
     const [selectedMonth, setSelectedMonth] = useState<number>(new Date().getMonth() + 1);
+    const [listingEnabled, setListingEnabled] = useState<boolean>(true);
     const [groupList, setGroupList] = useState<[{ name: string, id: number }]>([{name: 'default', id: 1}]);
 
     const updateFilters = async (categoryId: number) => {
@@ -23,11 +25,10 @@ const DailyPricingPage: React.FC = () => {
 
         setGroupList(rawGroupList);
         setSelectedVehicleGroup(rawGroupList[0].id)
-
     };
 
     const fetchData = async () => {
-        const rawData = await ApiGetDailyPricingByGroupId(selectedVehicleGroup, selectedYear, selectedMonth);
+        const rawData = await ApiGetDailyPricingByGroupId(selectedVehicleGroup, selectedYear, selectedMonth, listingEnabled);
 
         setData(rawData);
     }
@@ -38,7 +39,7 @@ const DailyPricingPage: React.FC = () => {
 
     useEffect(() => {
         fetchData();
-    }, [selectedVehicleGroup, selectedYear, selectedMonth]);
+    }, [selectedVehicleGroup, selectedYear, selectedMonth, listingEnabled]);
 
     const handleVehicleChange = (event: SelectChangeEvent<number>) => {
         setSelectedVehicleGroup(parseInt(event.target.value as string, 10));
@@ -49,15 +50,26 @@ const DailyPricingPage: React.FC = () => {
     const handleMonthChange = (event: SelectChangeEvent<number>) => {
         setSelectedMonth(parseInt(event.target.value as string, 10));
     };
+    const handleListingEnabledChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setListingEnabled(event.target.checked);
+    };
 
     return (
         <GlobalLayout>
             <div className="filters">
                 <VehicleGroupFilter activeGroupId={selectedVehicleGroup} groupList={groupList} onChange={handleVehicleChange} />
-
                 <YearFilter year={selectedYear} onChange={handleYearChange} />
-
                 <MonthsFilter month={selectedMonth} onChange={handleMonthChange} />
+                <FormControlLabel
+                    control={
+                        <Checkbox
+                            checked={listingEnabled}
+                            onChange={handleListingEnabledChange}
+                            color="primary"
+                        />
+                    }
+                    label="Показувати лише активні"
+                />
             </div>
 
             <DailyPricingGrid data={data} year={selectedYear} month={selectedMonth} />
