@@ -6,6 +6,7 @@ import {AuthProvider} from "./contexts/AuthContext.tsx";
 import PrivateRoute from "./components/PrivateRoute";
 import GroupPage_2 from "./pages/GroupPage_2";
 import DailyPricingPage from './pages/DailyPricingPage';
+import GroupPage from './pages/GroupPage';
 
 function App() {
   return (
@@ -16,6 +17,11 @@ function App() {
               <PrivateRoute>
                 <HomePage />
               </PrivateRoute>}
+            />
+            <Route path="/group-2" element={
+               <PrivateRoute>
+                   <GroupPage />
+               </PrivateRoute>}
             />
             <Route path="/group" element={
               <PrivateRoute>

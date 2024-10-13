@@ -2,9 +2,9 @@ import {apiGetStatisticByPeriodAndGroupId} from "../../api/endpoints/apiGetStati
 import TableStatistic, {TableStatisticConfig} from "../../components/TableStatistic";
 const GroupPage = () => {
   const config: TableStatisticConfig = {
-    id: 1,
+    id: 13,
     apiGetDataMethod: apiGetStatisticByPeriodAndGroupId,
-    minDate: '2024/05/28',
+    minDate: '2024-10-14',
   }
 
   return (
