@@ -11,9 +11,13 @@ import AverageGrid from '../../components/AverageGrid';
 import BarChartAverage from '../../components/BarChartAverage';
 import './dailyPricingPage.scss';
 import StateFilter from '../../components/Filters/StatesFilter.tsx';
+import {ApiGetCategoryByNameAndUserId} from '../../api/endpoints/api-get-category-by-name-and-user-id.ts';
 
 const DailyPricingPage: React.FC = () => {
-    const CATEGORY_ID = 2;
+    const userId = Number(localStorage.getItem('userId'));
+    const CATEGORY_NAME = 'dailyPricing';
+
+    const [categoryId, setCategoryId] = useState<number | null>(null);
     const [data, setData] = useState([]);
     const [selectedVehicleGroup, setSelectedVehicleGroup] = useState<number>(0);
     const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
@@ -42,11 +46,25 @@ const DailyPricingPage: React.FC = () => {
     }
 
     useEffect(() => {
-        updateFilters(CATEGORY_ID);
-    }, []);
+        const fetchCategoryId = async () => {
+            try {
+                const categoryData = await ApiGetCategoryByNameAndUserId(CATEGORY_NAME, userId);
+                const id = categoryData?.id;
+                if (id) {
+                    setCategoryId(id);
+                    updateFilters(id);
+                }
+            } catch (error) {
+                console.error("Error fetching category ID:", error);
+            }
+        };
+        fetchCategoryId();
+    }, [userId]);
 
     useEffect(() => {
-        fetchData();
+        if (categoryId) {
+            fetchData();
+        }
     }, [selectedVehicleGroup, selectedYear, selectedMonth, listingEnabled, selectedState]);
 
     const handleVehicleChange = (event: SelectChangeEvent<number>) => {
@@ -80,13 +98,13 @@ const DailyPricingPage: React.FC = () => {
                             color="primary"
                         />
                     }
-                    label="Показувати лише активні"
+                    label="Show only active"
                 />
             </div>
 
             <DailyPricingGrid data={data} year={selectedYear} month={selectedMonth} />
             <Typography variant="h5">
-                Загальні показники
+                General indicators
             </Typography>
             <AverageGrid data={data} year={selectedYear} month={selectedMonth} />
 

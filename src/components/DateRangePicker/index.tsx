@@ -26,12 +26,12 @@ const DateRangePicker = ({ onStartDateChange,  onEndDateChange, minDate }: DateR
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker
-        label="Початкова дата"
+        label="Start date"
         onChange={setStartDateHandler}
         minDate={dayjs(minDate)}
       />
       <DatePicker
-        label="Кінцева дата"
+        label="End date"
         onChange={setEndDateHandler}
         minDate={dayjs(minDate)}
       />

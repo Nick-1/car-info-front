@@ -20,16 +20,16 @@ const GlobalLayout: React.FC<LayoutProps> = ({ children }) => {
             <InsightsIcon /> Global Statistic
           </Typography>
           <Button color="inherit" component={Link} to="/" sx={{ marginLeft: 'auto' }}>
-            Хост
+            Host
           </Button>
           <Button color="inherit" component={Link} to="/group">
-            Група №1
+            Basic data
           </Button>
           {/*<Button color="inherit" component={Link} to="/group-2">*/}
           {/*  Група №2*/}
           {/*</Button>*/}
             <Button color="inherit" component={Link} to="/daily-pricing">
-              Аналіз цін
+            Global data
             </Button>
         </Toolbar>
       </AppBar>

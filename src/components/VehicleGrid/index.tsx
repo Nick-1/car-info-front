@@ -107,11 +107,11 @@ const VehicleTable: React.FC<vehicleTableProps> = ({ data }) => {
     },
   }
 
-  const isMyCarColProps = {
-    renderCell: (params: GridRenderCellParams) => (
-      params.row.isMyCar ? <CheckCircleIcon color="success" /> : <RemoveCircleIcon />
-    ),
-  }
+  // const isMyCarColProps = {
+  //   renderCell: (params: GridRenderCellParams) => (
+  //     params.row.isMyCar ? <CheckCircleIcon color="success" /> : <RemoveCircleIcon />
+  //   ),
+  // }
 
   const activeListingColProps = {
     renderCell: (params: GridRenderCellParams) => (
@@ -120,23 +120,23 @@ const VehicleTable: React.FC<vehicleTableProps> = ({ data }) => {
   }
 
   const columns: GridColDef[] = [
-    { field: 'photo', headerName: 'Фото', ...photoColProps},
-    { field: 'car', headerName: 'Модель', ...carColProps, },
-    { field: 'year', headerName: 'Рік', },
-    { field: 'isMyCar', headerName: 'Наша машина', ...isMyCarColProps},
-    { field: 'price', headerName: 'Ціна', },
-    { field: 'dayPrice', headerName: 'Ціна за 3 дні', ...dayPriceColProps },
-    { field: 'weekPrice', headerName: 'Ціна за 7 днів', ...weekPriceColProps },
-    { field: 'monthPrice', headerName: 'Ціна за 1 місяць', ...monthPriceColProps },
-    { field: 'deliveryPrice', headerName: 'Ціна доставки', ...deliveryPriceColProps },
-    { field: 'notAvailable', headerName: 'Була зайнята', },
-    { field: 'listingCreatedTime', headerName: 'Дата створення лістингу', },
-    { field: 'color', headerName: 'Колір', },
-    { field: 'activeListing', headerName: 'Лістинг активний', ...activeListingColProps},
-    { field: 'tripCount', headerName: 'Поїздки', },
-    { field: 'numberOfFavorites', headerName: 'Кількість лайків', },
-    { field: 'numberOfReviews', headerName: 'Кількість оцінок', },
-    { field: 'state', headerName: 'Штат', },
+    { field: 'photo', headerName: 'Photo', ...photoColProps},
+    { field: 'car', headerName: 'Model', ...carColProps, },
+    { field: 'year', headerName: 'Year', },
+    // { field: 'isMyCar', headerName: 'Наша машина', ...isMyCarColProps},
+    { field: 'price', headerName: 'Price', },
+    { field: 'dayPrice', headerName: '3 days price', ...dayPriceColProps },
+    { field: 'weekPrice', headerName: '7 days price', ...weekPriceColProps },
+    { field: 'monthPrice', headerName: '1 month price', ...monthPriceColProps },
+    { field: 'deliveryPrice', headerName: 'Delivery price', ...deliveryPriceColProps },
+    { field: 'notAvailable', headerName: 'Rented days', },
+    { field: 'listingCreatedTime', headerName: 'Listing Created Time', },
+    { field: 'color', headerName: 'Color', },
+    { field: 'activeListing', headerName: 'Listing Enable', ...activeListingColProps},
+    { field: 'tripCount', headerName: 'Trip count', },
+    { field: 'numberOfFavorites', headerName: 'Likes count', },
+    { field: 'numberOfReviews', headerName: 'Reviews Count', },
+    { field: 'state', headerName: 'State', },
   ];
   return (
     <>

@@ -23,7 +23,7 @@ const BarChartAverage: React.FC<BarChartAverageProps> = (props) => {
         <Box className="BarChartAverage">
             <div>
                 <Typography variant="h5" gutterBottom>
-                    Коливання середньої ціни по дням
+                    Average price by day
                 </Typography>
                 <BarChart
                     xAxis={[
@@ -51,7 +51,7 @@ const BarChartAverage: React.FC<BarChartAverageProps> = (props) => {
 
             <div>
                 <Typography variant="h5" gutterBottom>
-                    Відсоток зайнятих машин по дням
+                    Percentage of rented cars by days
                 </Typography>
                 <BarChart
                     xAxis={[

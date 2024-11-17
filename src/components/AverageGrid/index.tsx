@@ -18,7 +18,7 @@ const AverageGrid: React.FC<AverageGridProps> = (props) => {
     const averageData = processDailyPricing(data);
 
     const columns: GridColDef[] = [
-        { field: 'item', headerName: 'Показник', ...itemColProps },
+        { field: 'item', headerName: 'Indicator', ...itemColProps },
         ...generateDaysArray(year, month, renderCellParams),
     ];
 
@@ -26,21 +26,21 @@ const AverageGrid: React.FC<AverageGridProps> = (props) => {
         {
             id: 1,
             item: {
-                name: 'Середня ціна за день'
+                name: 'The average price per day'
             },
             ...averageData.average
         },
         {
             id: 3,
             item: {
-                name: 'Відсоток зайнятих машин'
+                name: 'Percentage of rented cars'
             },
             ...averageData.unavailablePercentage,
         },
         {
             id: 2,
             item: {
-                name: 'Кількість зайнятих машин'
+                name: 'Numbers of rented cars'
             },
             ...averageData.unavailableCount
         },

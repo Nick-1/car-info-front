@@ -13,7 +13,7 @@ const VehicleGroupFilter: React.FC<VehicleGroupFilterProps> = (props) => {
     return (
         <>
             <FormControl margin="normal">
-                <InputLabel id="vehicle-select-label">Машина</InputLabel>
+                <InputLabel id="vehicle-select-label">Vehicle</InputLabel>
                 <Select
                     labelId="vehicle-select-label"
                     value={activeGroupId}

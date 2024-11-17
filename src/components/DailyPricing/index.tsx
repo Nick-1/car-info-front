@@ -22,12 +22,12 @@ const DailyPricingGrid: React.FC<DailyPricingProps> = (props) => {
     const mappedData = toDailyPricing(data);
 
     const columns: GridColDef[] = [
-        { field: 'car', headerName: 'Модель', ...carColProps },
-        { field: 'year', headerName: 'Рік' },
-        { field: 'color', headerName: 'Колір' },
-        { field: 'listingEnabled', headerName: 'Лістинг активний', ...activeListingColProps },
-        { field: 'state', headerName: 'Штат' },
-        { field: 'city', headerName: 'Місто' },
+        { field: 'car', headerName: 'Model', ...carColProps },
+        { field: 'year', headerName: 'Year' },
+        { field: 'color', headerName: 'Color' },
+        { field: 'listingEnabled', headerName: 'Listing Enabled', ...activeListingColProps },
+        { field: 'state', headerName: 'State' },
+        { field: 'city', headerName: 'City' },
         ...generateDaysArray(year, month, dateAndPriceProps),
     ];
 

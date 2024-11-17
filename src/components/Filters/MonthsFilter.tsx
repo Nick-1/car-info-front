@@ -6,34 +6,34 @@ export interface MonthFilterProps {
     onChange: (vehicleGroupId: SelectChangeEvent<number>) => void,
 }
 
+const monthsInEnglish = [
+    { name: 'January', value: 1 },
+    { name: 'February', value: 2 },
+    { name: 'March', value: 3 },
+    { name: 'April', value: 4 },
+    { name: 'May', value: 5 },
+    { name: 'June', value: 6 },
+    { name: 'July', value: 7 },
+    { name: 'August', value: 8 },
+    { name: 'September', value: 9 },
+    { name: 'October', value: 10 },
+    { name: 'November', value: 11 },
+    { name: 'December', value: 12 },
+];
+
 const MonthsFilter: React.FC<MonthFilterProps> = (props) => {
     const {month, onChange} = props;
 
-    const monthsInUkrainian = [
-        { name: 'Січень', value: 1 },
-        { name: 'Лютий', value: 2 },
-        { name: 'Березень', value: 3 },
-        { name: 'Квітень', value: 4 },
-        { name: 'Травень', value: 5 },
-        { name: 'Червень', value: 6 },
-        { name: 'Липень', value: 7 },
-        { name: 'Серпень', value: 8 },
-        { name: 'Вересень', value: 9 },
-        { name: 'Жовтень', value: 10 },
-        { name: 'Листопад', value: 11 },
-        { name: 'Грудень', value: 12 },
-    ];
-
     return (
         <FormControl margin="normal">
-            <InputLabel id="month-select-label">Місяць</InputLabel>
+            <InputLabel id="month-select-label">Month</InputLabel>
             <Select
                 labelId="month-select-label"
                 value={month}
                 onChange={onChange}
                 label="Month"
             >
-                {monthsInUkrainian.map((monthOption) => (
+                {monthsInEnglish.map((monthOption) => (
                     <MenuItem key={monthOption.value} value={monthOption.value}>
                         {monthOption.name}
                     </MenuItem>

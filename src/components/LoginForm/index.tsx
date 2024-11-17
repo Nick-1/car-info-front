@@ -23,14 +23,17 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
       });
 
       const token = response.data.token;
+      const userId = response.data.id;
+
       localStorage.setItem('authToken', token);
+      localStorage.setItem('userId', userId);
 
       onLoginSuccess(token);
     } catch (err) {
       if (axios.isAxiosError(err) && err.response) {
-        setError(err.response.data.error || 'Не вірний логін або пароль');
+        setError(err.response.data.error || 'Incorrect login or password');
       } else {
-        setError('Не вірний логін або пароль');
+        setError('Incorrect login or password');
       }
     }
   };
@@ -46,7 +49,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
         }}
       >
         <Typography component="h1" variant="h5">
-          Вхід
+          Login
         </Typography>
         {error && <Typography color="error">{error}</Typography>}
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
@@ -55,7 +58,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
             required
             fullWidth
             id="username"
-            label="Логін"
+            label="Login"
             name="username"
             autoComplete="username"
             autoFocus
@@ -67,7 +70,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
             required
             fullWidth
             name="password"
-            label="Пароль"
+            label="Password"
             type="password"
             id="password"
             autoComplete="current-password"
@@ -80,7 +83,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Увійти
+            Submit
           </Button>
         </Box>
       </Box>
