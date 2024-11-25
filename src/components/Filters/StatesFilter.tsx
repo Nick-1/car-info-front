@@ -18,7 +18,7 @@ const StateFilter: React.FC<StateFilterProps> = (props) => {
 
     return (
         <FormControl margin="normal">
-            <InputLabel id="state-select-label">Штат</InputLabel>
+            <InputLabel id="state-select-label">State</InputLabel>
             <Select
                 labelId="state-select-label"
                 value={state}
