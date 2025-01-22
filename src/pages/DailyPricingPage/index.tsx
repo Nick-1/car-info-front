@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import GlobalLayout from '../../components/GlobalLayout.tsx';
 import DailyPricingGrid from '../../components/DailyPricing';
 import {Checkbox, FormControlLabel, SelectChangeEvent, Typography} from '@mui/material';
@@ -12,10 +12,16 @@ import BarChartAverage from '../../components/BarChartAverage';
 import './dailyPricingPage.scss';
 import StateFilter from '../../components/Filters/StatesFilter.tsx';
 import {ApiGetCategoryByNameAndUserId} from '../../api/endpoints/api-get-category-by-name-and-user-id.ts';
+import { useLocation } from 'react-router-dom';
+import { toCamelCase } from '../../helpers';
 
 const DailyPricingPage: React.FC = () => {
+    const location = useLocation();
     const userId = Number(localStorage.getItem('userId'));
-    const CATEGORY_NAME = 'dailyPricing';
+    const path = location.pathname;
+    const categoryUrl = path.split('/')[1];
+    const CATEGORY_NAME = categoryUrl ? toCamelCase(categoryUrl) : 'dailyPricing';
+    console.info(CATEGORY_NAME)
 
     const [categoryId, setCategoryId] = useState<number | null>(null);
     const [data, setData] = useState([]);
@@ -59,7 +65,7 @@ const DailyPricingPage: React.FC = () => {
             }
         };
         fetchCategoryId();
-    }, [userId]);
+    }, [userId, CATEGORY_NAME]);
 
     useEffect(() => {
         if (categoryId) {

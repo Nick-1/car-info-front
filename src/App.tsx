@@ -33,6 +33,11 @@ function App() {
                     <DailyPricingPage />
                 </PrivateRoute>}
             />
+            <Route path="/daily-pricing-research-1" element={
+              <PrivateRoute>
+                  <DailyPricingPage />
+              </PrivateRoute>}
+            />
             <Route path="/login" element={<LoginPage />} />
           </Routes>
       </BrowserRouter>

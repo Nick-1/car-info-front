@@ -31,6 +31,9 @@ const GlobalLayout: React.FC<LayoutProps> = ({ children }) => {
             <Button color="inherit" component={Link} to="/daily-pricing">
             Global data
             </Button>
+            <Button color="inherit" component={Link} to="/daily-pricing-research-1">
+                Research
+            </Button>
         </Toolbar>
       </AppBar>
       <Box
