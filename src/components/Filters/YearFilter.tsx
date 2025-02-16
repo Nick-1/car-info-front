@@ -13,7 +13,7 @@ const YearFilter: React.FC<YearFilterProps> = (props) => {
         const years = [];
         const currentYear = new Date().getFullYear();
 
-        for (let year = 2024; year <= currentYear + 1; year++) {
+        for (let year = 2025; year <= currentYear + 1; year++) {
             years.push(year);
         }
 
@@ -22,7 +22,7 @@ const YearFilter: React.FC<YearFilterProps> = (props) => {
 
     return (
         <FormControl margin="normal">
-            <InputLabel id="year-select-label">Рік</InputLabel>
+            <InputLabel id="year-select-label">Year</InputLabel>
             <Select
                 labelId="year-select-label"
                 value={year}

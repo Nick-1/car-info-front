@@ -22,15 +22,15 @@ const GlobalLayout: React.FC<LayoutProps> = ({ children }) => {
           <Button color="inherit" component={Link} to="/" sx={{ marginLeft: 'auto' }}>
             Host
           </Button>
-          <Button color="inherit" component={Link} to="/group">
-            Basic data
+          <Button color="inherit" component={Link} to="/top-vehicles-by-unavailable-days" sx={{ marginLeft: 'auto' }}>
+              Top 10
           </Button>
-          {/*<Button color="inherit" component={Link} to="/group-2">*/}
-          {/*  Група №2*/}
+          {/*<Button color="inherit" component={Link} to="/group">*/}
+          {/*  Basic data*/}
           {/*</Button>*/}
-            <Button color="inherit" component={Link} to="/daily-pricing">
-            Global data
-            </Button>
+          {/*  <Button color="inherit" component={Link} to="/daily-pricing">*/}
+          {/*  Global data*/}
+          {/*  </Button>*/}
             <Button color="inherit" component={Link} to="/daily-pricing-research-1">
                 Research
             </Button>

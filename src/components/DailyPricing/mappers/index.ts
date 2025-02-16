@@ -52,8 +52,12 @@ export const generateDayAndPriceColumns = (
 }
 
 export const toDailyPricing = (dailyPricingRawList: DailyPricingRaw[]) => {
+
     return dailyPricingRawList.map((dp) => ({
         id: dp.vehicle.id,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        photo: dp.vehicle.images[0].thumbnails['170x102'],
         car: {
             name: `${dp.vehicle.make} ${dp.vehicle.model}`,
             url: dp.vehicle.url,

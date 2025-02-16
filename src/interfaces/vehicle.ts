@@ -18,6 +18,7 @@ export interface Vehicle {
     automaticTransmission: boolean;
     listingEnabled: boolean;
     listingCreatedTime: number;
+    tripCount: number;
     make: string;
     model: string;
     marketAreaId: number | null;

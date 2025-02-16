@@ -21,7 +21,6 @@ const DailyPricingPage: React.FC = () => {
     const path = location.pathname;
     const categoryUrl = path.split('/')[1];
     const CATEGORY_NAME = categoryUrl ? toCamelCase(categoryUrl) : 'dailyPricing';
-    console.info(CATEGORY_NAME)
 
     const [categoryId, setCategoryId] = useState<number | null>(null);
     const [data, setData] = useState([]);
