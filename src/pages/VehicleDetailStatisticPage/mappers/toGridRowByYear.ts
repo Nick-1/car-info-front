@@ -19,7 +19,7 @@ export function mapData(input: DailyPricing[], year: number): OutputData[] {
 
     const groupedData: { [key: number]: DailyPricing[] } = filteredData.reduce((acc, item) => {
         const date = new Date(item.date);
-        const month = date.getUTCMonth(); // Отримуємо місяць (0-11)
+        const month = date.getUTCMonth();
         if (!acc[month]) {
             acc[month] = [];
         }
@@ -41,7 +41,7 @@ export function mapData(input: DailyPricing[], year: number): OutputData[] {
         const maxPrice = Math.ceil(Math.max(...prices));
 
         const daysWithUnavailable = data.filter((item) => item.wholeDayUnavailable).length;
-        const totalDaysInMonth = new Date(year, month + 1, 0).getUTCDate();
+        const totalDaysInMonth = new Date(year, month + 1, 0).getDate();
         const availableCount = `${daysWithUnavailable}/${totalDaysInMonth}`;
 
         return {

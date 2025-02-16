@@ -35,7 +35,7 @@ const BarChartAverage: React.FC<BarChartAverageProps> = (props) => {
                     ]}
                     yAxis={[
                         {
-                            label: 'Середня ціна',
+                            label: 'Average price',
                         },
                     ]}
                     series={[
@@ -63,7 +63,7 @@ const BarChartAverage: React.FC<BarChartAverageProps> = (props) => {
                     ]}
                     yAxis={[
                         {
-                            label: 'Відсоток зайнятих машин (%)',
+                            label: 'Percentage of rented cars (%)',
                         },
                     ]}
                     series={[

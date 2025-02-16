@@ -74,8 +74,8 @@ export const toDailyPricing = (dailyPricingRawList: DailyPricingRaw[]) => {
 export const toAverage = (dailyPricingRawList: DailyPricingRaw[]) => {
     return dailyPricingRawList.map((dp) => ({
         id: dp.vehicle.id,
-        average: 'Середня ціна за день',
-        unavailableCount: 'Кількість зайнятих машин за день',
+        average: 'Average price',
+        unavailableCount: 'Percentage of rented cars',
         ...generateDateAndPriceRows(dp.dailyPricing),
     }))
 }
