@@ -13,7 +13,7 @@ const TopVehiclesListPage: React.FC = () => {
     const vehiclesStatistic = await ApiGetTopVehiclesByUnavailableDays(
         selectedYear,
         selectedMonth,
-        15,
+        25,
         10,
     );
 
