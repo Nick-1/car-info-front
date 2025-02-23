@@ -1,9 +1,16 @@
 import {api} from "../axios";
 import {Host} from '../../interfaces/host.ts';
+import {DEFAULT_STATE} from '../../components/Filters/StatesFilter.tsx';
 
-export const ApiGetHostsListByUserId = async (): Promise<(Host & {vehiclesCount: number, firstVehicleImage: string})[]> => {
+export const ApiGetHostsListByUserId = async (state?: string): Promise<(Host & {vehiclesCount: number, firstVehicleImage: string})[]> => {
+    const validState = state === DEFAULT_STATE ? '' : state
+
     try {
-        const response = await api.get('api/v1/host/list');
+        const response = await api.get('api/v1/host/list', {
+            params: {
+                state: validState,
+            }
+        });
 
         return response.data;
     } catch (error) {

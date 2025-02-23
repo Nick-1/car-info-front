@@ -4,6 +4,8 @@ import GlobalLayout from '../../components/GlobalLayout.tsx';
 import {Backdrop, CircularProgress, SelectChangeEvent} from '@mui/material';
 import VehiclesStatisticTable, {VehicleStatistic} from '../../components/VehiclesStatisticTable';
 
+export const TOP_LIMIT_VALUE = 20;
+
 const TopVehiclesListPage: React.FC = () => {
   const [data, setData] = useState<VehicleStatistic[]>([]);
   const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
@@ -14,7 +16,7 @@ const TopVehiclesListPage: React.FC = () => {
         selectedYear,
         selectedMonth,
         25,
-        10,
+        TOP_LIMIT_VALUE,
     );
 
     setData(vehiclesStatistic);

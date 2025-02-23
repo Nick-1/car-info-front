@@ -16,7 +16,6 @@ export const ApiGetTopVehiclesByUnavailableDays = async (
         }
     );
 
-      console.info('response.data', response.data);
     return response.data;
   } catch (error) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

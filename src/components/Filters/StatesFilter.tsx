@@ -5,16 +5,17 @@ export interface StateFilterProps {
     state: string,
     onChange: (state: SelectChangeEvent<string>) => void,
 }
+export const DEFAULT_STATE = 'ALL';
 
 const statesInEnglish = [
+    { name: 'All States', value: DEFAULT_STATE },
     { name: 'Florida', value: 'FL' },
-    { name: 'Massachusetts', value: 'MA' },
-    { name: 'Connecticut', value: 'CT' },
-    { name: 'Massachusetts + Connecticut', value: 'MA, CT' },
+    { name: 'California', value: 'CA' },
+    { name: 'New York', value: 'NY' },
 ];
 
 const StateFilter: React.FC<StateFilterProps> = (props) => {
-    const {state: state, onChange} = props;
+    const {state: state, onChange } = props;
 
     return (
         <FormControl margin="normal">
@@ -24,6 +25,7 @@ const StateFilter: React.FC<StateFilterProps> = (props) => {
                 value={state}
                 onChange={onChange}
                 label="State"
+                defaultValue={'CA'}
             >
                 {statesInEnglish.map((stateOption) => (
                     <MenuItem key={stateOption.value} value={stateOption.value}>

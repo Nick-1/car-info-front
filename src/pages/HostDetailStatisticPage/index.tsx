@@ -1,12 +1,12 @@
-import {SelectChangeEvent} from '@mui/material';
+import { SelectChangeEvent } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import GlobalLayout from '../../components/GlobalLayout.tsx';
-import {ApiGetDetailHostStatistic} from '../../api/endpoints/api-get-detail-host-statistic.ts';
+import { ApiGetDetailHostStatistic } from '../../api/endpoints/api-get-detail-host-statistic.ts';
 import { Host } from '../../interfaces/host.ts';
 import './dailyPricingPage.scss';
 import HostStatisticCard from '../../components/Cards/HostStatisticCard';
-import VehicleStatisticTable, {VehicleStatistic} from '../../components/VehiclesStatisticTable';
+import VehicleStatisticTable, { VehicleStatistic } from '../../components/VehiclesStatisticTable';
 import FullScreenLoader from '../../components/Loader/FullScreenLoader';
 
 export interface HostDetailStatistic {
@@ -19,15 +19,20 @@ const HostDetailStatisticPage: React.FC = () => {
     const [data, setData] = useState<HostDetailStatistic>();
     const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
     const [selectedMonth, setSelectedMonth] = useState<number>(new Date().getMonth() + 1);
+    const [loading, setLoading] = useState<boolean>(false);
 
     const fetchData = async () => {
-        const data = await ApiGetDetailHostStatistic(
-            Number(hostId),
-            selectedYear,
-            selectedMonth,
-        );
-
-        setData(data);
+        setLoading(true);
+        try {
+            const data = await ApiGetDetailHostStatistic(
+                Number(hostId),
+                selectedYear,
+                selectedMonth,
+            );
+            setData(data);
+        } finally {
+            setLoading(false);
+        }
     }
 
     useEffect(() => {
@@ -43,14 +48,15 @@ const HostDetailStatisticPage: React.FC = () => {
     };
 
     const layout = () => {
-        if (!data) return <FullScreenLoader />
+        if (loading) return <FullScreenLoader />
 
+        if (!data) return null;
 
         return (
             <>
                 <HostStatisticCard
                     // @ts-expect-error
-                    image={data.vehicleList[0].vehicle.images}
+                    image={data.vehicleList[0]?.vehicle?.images}
                     firstName={data.host.firstName}
                     lastName={data.host.lastName}
                     // @ts-expect-error

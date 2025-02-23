@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import InsightsIcon from '@mui/icons-material/Insights';
 import {Button} from "@mui/material";
 import { Link } from 'react-router-dom';
+import {TOP_LIMIT_VALUE} from '../pages/TopVehiclesListPage';
 
 interface LayoutProps {
   children: ReactNode;
@@ -17,23 +18,19 @@ const GlobalLayout: React.FC<LayoutProps> = ({ children }) => {
       <AppBar position="fixed">
         <Toolbar>
           <Typography variant="h5" noWrap sx={{ flexGrow: 1 }}>
-            <InsightsIcon /> Global Statistic
+              <Link to="/" style={{ color: '#fff', textDecoration: 'none' }}>
+                  <InsightsIcon /> Global Statistic
+              </Link>
           </Typography>
           <Button color="inherit" component={Link} to="/" sx={{ marginLeft: 'auto' }}>
             Host
           </Button>
           <Button color="inherit" component={Link} to="/top-vehicles-by-unavailable-days" sx={{ marginLeft: 'auto' }}>
-              Top 10
+              Top {TOP_LIMIT_VALUE}
           </Button>
-          {/*<Button color="inherit" component={Link} to="/group">*/}
-          {/*  Basic data*/}
-          {/*</Button>*/}
-          {/*  <Button color="inherit" component={Link} to="/daily-pricing">*/}
-          {/*  Global data*/}
-          {/*  </Button>*/}
-            <Button color="inherit" component={Link} to="/daily-pricing-research-1">
-                Research
-            </Button>
+          <Button color="inherit" component={Link} to="/daily-pricing-research-1">
+              Research
+          </Button>
         </Toolbar>
       </AppBar>
       <Box

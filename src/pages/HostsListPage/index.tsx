@@ -2,23 +2,29 @@ import React, {useEffect, useState} from 'react';
 import {Host} from '../../interfaces/host.ts';
 import {ApiGetHostsListByUserId} from '../../api/endpoints/api-get-hosts-list-by-user-id.ts';
 import GlobalLayout from '../../components/GlobalLayout.tsx';
-import {Card, CardContent, CardMedia, Grid, Link} from '@mui/material';
+import {Card, CardContent, CardMedia, Grid, Link, SelectChangeEvent} from '@mui/material';
 import Typography from '@mui/material/Typography';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import FullScreenLoader from '../../components/Loader/FullScreenLoader';
+import StateFilter, {DEFAULT_STATE} from '../../components/Filters/StatesFilter.tsx';
 
 const HostsListPage: React.FC = () => {
     const [data, setData] = useState<(Host & {vehiclesCount: number, firstVehicleImage: string})[]>();
+    const [selectedState, setSelectedState] = useState<string>(DEFAULT_STATE);
 
     const fetchData = async () => {
-        const data = await ApiGetHostsListByUserId();
+        const data = await ApiGetHostsListByUserId(selectedState);
 
         setData(data);
     }
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [selectedState]);
+
+    const handleStateChange = (event: SelectChangeEvent<string>) => {
+        setSelectedState(event.target.value);
+    };
 
     const layout = () => {
         if (!data) return <FullScreenLoader />
@@ -65,6 +71,9 @@ const HostsListPage: React.FC = () => {
 
     return (
         <GlobalLayout>
+            <div className="filters">
+                <StateFilter state={selectedState} onChange={handleStateChange}/>
+            </div>
             <>
                 {layout()}
             </>
