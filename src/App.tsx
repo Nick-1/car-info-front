@@ -4,12 +4,12 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import {AuthProvider} from "./contexts/AuthContext.tsx";
 import PrivateRoute from "./components/PrivateRoute";
-import GroupPage_2 from "./pages/GroupPage_2";
 import DailyPricingPage from './pages/DailyPricingPage';
 import VehicleDetailStatisticPage from './pages/VehicleDetailStatisticPage';
 import HostDetailStatisticPage from './pages/HostDetailStatisticPage';
 import HostsListPage from './pages/HostsListPage';
 import TopVehicleListPage from './pages/TopVehiclesListPage';
+import MyCarsPage from './pages/MyCarsPage';
 
 function App() {
   return (
@@ -31,9 +31,9 @@ function App() {
                   <TopVehicleListPage />
               </PrivateRoute>}
             />
-            <Route path="/group" element={
+            <Route path="/my-cars" element={
               <PrivateRoute>
-                <GroupPage_2 />
+                <MyCarsPage />
               </PrivateRoute>}
             />
             <Route path="/host/:hostId" element={
