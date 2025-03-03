@@ -10,6 +10,7 @@ import HostDetailStatisticPage from './pages/HostDetailStatisticPage';
 import HostsListPage from './pages/HostsListPage';
 import TopVehicleListPage from './pages/TopVehiclesListPage';
 import MyCarsPage from './pages/MyCarsPage';
+import DailyPricingMyCarsPage from './pages/DailyPricingMyCarsPage';
 
 function App() {
   return (
@@ -49,6 +50,11 @@ function App() {
             <Route path="/daily-pricing" element={
                 <PrivateRoute>
                     <DailyPricingPage />
+                </PrivateRoute>}
+            />
+            <Route path="/daily-pricing-my-cars" element={
+                <PrivateRoute>
+                    <DailyPricingMyCarsPage />
                 </PrivateRoute>}
             />
             <Route path="/daily-pricing-research-1" element={

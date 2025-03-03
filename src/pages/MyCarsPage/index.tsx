@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import GlobalLayout from '../../components/GlobalLayout.tsx';
-import {Backdrop, CircularProgress, SelectChangeEvent} from '@mui/material';
+import {Backdrop, Button, CircularProgress, SelectChangeEvent} from '@mui/material';
 import VehiclesStatisticTable, {VehicleStatistic} from '../../components/VehiclesStatisticTable';
 import {ApiGetStatisticFroGroup} from '../../api/endpoints/get-statistic-for-group.ts';
+import {Link} from 'react-router-dom';
 
 export const TOP_LIMIT_VALUE = 20;
 
@@ -46,13 +47,24 @@ const MyCarsPage: React.FC = () => {
     }
 
     return (
-        <VehiclesStatisticTable
-            data={data}
-            onYearChange={handleYearChange}
-            onMonthChange={handleMonthChange}
-            yearValue={selectedYear}
-            monthValue={selectedMonth}
-        />
+        <>
+          <VehiclesStatisticTable
+              data={data}
+              onYearChange={handleYearChange}
+              onMonthChange={handleMonthChange}
+              yearValue={selectedYear}
+              monthValue={selectedMonth}
+          />
+
+          <Button
+              component={Link}
+              variant="contained"
+              to="/daily-pricing-my-cars"
+              style={{ marginLeft: 20 }}
+          >
+            Daily Pricing
+          </Button>
+        </>
     );
   }
 
