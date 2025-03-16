@@ -4,9 +4,10 @@ import DailyPricingGrid from '../../components/DailyPricing';
 import {Checkbox, FormControlLabel, SelectChangeEvent} from '@mui/material';
 import YearFilter from '../../components/Filters/YearFilter.tsx';
 import MonthsFilter from '../../components/Filters/MonthsFilter.tsx';
-import './dailyPricingPage.scss';
 import { useLocation } from 'react-router-dom';
 import {ApiGetDailyPricingByHostId} from '../../api/endpoints/api-get-daily-pricing-by-host-id.ts';
+import FullScreenLoader from '../../components/Loader/FullScreenLoader';
+import './dailyPricingPage.scss';
 
 const DailyPricingMyHostPage: React.FC = () => {
     const location = useLocation();
@@ -42,6 +43,12 @@ const DailyPricingMyHostPage: React.FC = () => {
         setListingEnabled(event.target.checked);
     };
 
+    const layout = () => {
+        if (data.length === 0) return <FullScreenLoader />
+
+        return <DailyPricingGrid data={data} year={selectedYear} month={selectedMonth} />
+    }
+
     return (
         <GlobalLayout>
             <div className="filters">
@@ -59,7 +66,7 @@ const DailyPricingMyHostPage: React.FC = () => {
                 />
             </div>
 
-            <DailyPricingGrid data={data} year={selectedYear} month={selectedMonth} />
+            { layout() }
 
         </GlobalLayout>
     );

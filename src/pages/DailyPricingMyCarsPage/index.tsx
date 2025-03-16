@@ -7,11 +7,12 @@ import YearFilter from '../../components/Filters/YearFilter.tsx';
 import MonthsFilter from '../../components/Filters/MonthsFilter.tsx';
 import {ApiGetGroupListByCategoryId} from '../../api/endpoints/api-get-group-list-by-category-id.ts';
 import {ApiGetDailyPricingByGroupId} from '../../api/endpoints/api-get-daily-pricing-by-groupId.ts';
-import './dailyPricingPage.scss';
 import StateFilter from '../../components/Filters/StatesFilter.tsx';
 import {ApiGetCategoryByNameAndUserId} from '../../api/endpoints/api-get-category-by-name-and-user-id.ts';
 import { useLocation } from 'react-router-dom';
 import { toCamelCase } from '../../helpers';
+import FullScreenLoader from '../../components/Loader/FullScreenLoader';
+import './dailyPricingPage.scss';
 
 const DailyPricingMyCarsPage: React.FC = () => {
     const location = useLocation();
@@ -86,6 +87,12 @@ const DailyPricingMyCarsPage: React.FC = () => {
         setListingEnabled(event.target.checked);
     };
 
+    const layout = () => {
+        if (data.length === 0) return <FullScreenLoader />
+
+        return <DailyPricingGrid data={data} year={selectedYear} month={selectedMonth} />
+    }
+
     return (
         <GlobalLayout>
             <div className="filters">
@@ -105,7 +112,7 @@ const DailyPricingMyCarsPage: React.FC = () => {
                 />
             </div>
 
-            <DailyPricingGrid data={data} year={selectedYear} month={selectedMonth} />
+            { layout() }
 
         </GlobalLayout>
     );
