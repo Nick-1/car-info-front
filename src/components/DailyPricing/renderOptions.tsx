@@ -32,8 +32,8 @@ export const dateAndPriceProps = (rowName: string): Partial<GridColDef> => {
         renderCell: (params: GridRenderCellParams) => {
             const row = params.row[rowName];
             const classes = classNames('priceRow', {
-                'red': row?.wholeDayUnavailable,
-                'green': !row?.wholeDayUnavailable,
+                'unavailable': row?.wholeDayUnavailable,
+                'available': !row?.wholeDayUnavailable,
             });
 
             if (row) {

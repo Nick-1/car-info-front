@@ -5,11 +5,12 @@
   justify-content: center;
   align-items: center;
 
-  &.red {
-    background-color: #f7bcbc;
+  &.unavailable {
+    background-color: #5a5a5a;
+    color: white;
   }
-  &.green {
-    background-color: #a3d2a3;
+  &.available {
+    background-color: #bbe1f8;
   }
 }
 

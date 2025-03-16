@@ -12,7 +12,7 @@ const GlobalLayout: React.FC<LayoutProps> = ({ children }) => {
       <Header />
       <Box
         component="main"
-        sx={{ bgcolor: 'background.default', p: 3, mt: 7 }}
+        sx={{ bgcolor: 'background.default', p: 1, mt: 10 }}
       >
         {children}
       </Box>

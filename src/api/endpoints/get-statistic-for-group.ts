@@ -1,7 +1,7 @@
 import {api} from "../axios";
 import {VehicleStatistic} from '../../components/VehiclesStatisticTable';
 
-export const ApiGetStatisticFroGroup = async (
+export const ApiGetStatisticForGroup = async (
     groupName: string,
     year: number,
     month: number,

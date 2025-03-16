@@ -1,9 +1,10 @@
 export const ProgressBarVertical = ({ value = 0 }: { value: number }) => {
     const getColor = () => {
-        if (value <= 25) return '#4CAF50';
-        if (value <= 74) return '#D9A34A';
+        if (value <= 20) return '#FF4D4F';
 
-        return  '#FF4D4F'
+        if (value <= 55) return '#D9A34A';
+
+        return  '#4CAF50'
     };
 
     return (

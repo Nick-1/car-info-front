@@ -10,7 +10,7 @@ import {ApiGetDailyPricingByGroupId} from '../../api/endpoints/api-get-daily-pri
 import AverageGrid from '../../components/AverageGrid';
 import BarChartAverage from '../../components/BarChartAverage';
 import './dailyPricingPage.scss';
-import StateFilter from '../../components/Filters/StatesFilter.tsx';
+// import StateFilter from '../../components/Filters/StatesFilter.tsx';
 import {ApiGetCategoryByNameAndUserId} from '../../api/endpoints/api-get-category-by-name-and-user-id.ts';
 import { useLocation } from 'react-router-dom';
 import { toCamelCase } from '../../helpers';
@@ -27,7 +27,7 @@ const DailyPricingPage: React.FC = () => {
     const [selectedVehicleGroup, setSelectedVehicleGroup] = useState<number>(0);
     const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
     const [selectedMonth, setSelectedMonth] = useState<number>(new Date().getMonth() + 1);
-    const [selectedState, setSelectedState] = useState<string>('FL');
+    // const [selectedState, setSelectedState] = useState<string>('FL');
     const [listingEnabled, setListingEnabled] = useState<boolean>(true);
     const [groupList, setGroupList] = useState<[{ name: string, id: number }]>([{name: 'default', id: 1}]);
 
@@ -44,7 +44,6 @@ const DailyPricingPage: React.FC = () => {
             selectedYear,
             selectedMonth,
             listingEnabled,
-            selectedState
         );
 
         setData(rawData);
@@ -70,7 +69,7 @@ const DailyPricingPage: React.FC = () => {
         if (categoryId) {
             fetchData();
         }
-    }, [selectedVehicleGroup, selectedYear, selectedMonth, listingEnabled, selectedState]);
+    }, [selectedVehicleGroup, selectedYear, selectedMonth, listingEnabled]); // add selectedState
 
     const handleVehicleChange = (event: SelectChangeEvent<number>) => {
         setSelectedVehicleGroup(parseInt(event.target.value as string, 10));
@@ -81,9 +80,10 @@ const DailyPricingPage: React.FC = () => {
     const handleMonthChange = (event: SelectChangeEvent<number>) => {
         setSelectedMonth(parseInt(event.target.value as string, 10));
     };
-    const handleStateChange = (event: SelectChangeEvent<string>) => {
-        setSelectedState(event.target.value);
-    };
+
+    // const handleStateChange = (event: SelectChangeEvent<string>) => {
+    //     setSelectedState(event.target.value);
+    // };
     const handleListingEnabledChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setListingEnabled(event.target.checked);
     };
@@ -94,7 +94,7 @@ const DailyPricingPage: React.FC = () => {
                 <VehicleGroupFilter activeGroupId={selectedVehicleGroup} groupList={groupList} onChange={handleVehicleChange} />
                 <YearFilter year={selectedYear} onChange={handleYearChange} />
                 <MonthsFilter month={selectedMonth} onChange={handleMonthChange} />
-                <StateFilter state={selectedState} onChange={handleStateChange} />
+                {/*<StateFilter state={selectedState} onChange={handleStateChange} />*/}
                 <FormControlLabel
                     control={
                         <Checkbox

@@ -11,6 +11,8 @@ import HostsListPage from './pages/HostsListPage';
 import TopVehicleListPage from './pages/TopVehiclesListPage';
 import MyCarsPage from './pages/MyCarsPage';
 import DailyPricingMyCarsPage from './pages/DailyPricingMyCarsPage';
+import MyHostListPage from './pages/MyHostListPage';
+import DailyPricingMyHostPage from './pages/DailyPricingMyHostPage';
 
 function App() {
   return (
@@ -37,6 +39,11 @@ function App() {
                 <MyCarsPage />
               </PrivateRoute>}
             />
+            <Route path="/my-hosts" element={
+               <PrivateRoute>
+                 <MyHostListPage />
+               </PrivateRoute>}
+            />
             <Route path="/host/:hostId" element={
               <PrivateRoute>
                   <HostDetailStatisticPage />
@@ -55,6 +62,11 @@ function App() {
             <Route path="/daily-pricing-my-cars" element={
                 <PrivateRoute>
                     <DailyPricingMyCarsPage />
+                </PrivateRoute>}
+            />
+            <Route path="/daily-pricing/host/:hostId" element={
+                <PrivateRoute>
+                    <DailyPricingMyHostPage />
                 </PrivateRoute>}
             />
             <Route path="/daily-pricing-research-1" element={

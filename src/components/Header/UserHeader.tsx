@@ -20,6 +20,9 @@ const AdminHeader: React.FC = () => {
                 <Button color="inherit" component={Link} to="/" sx={{ marginLeft: 'auto' }}>
                     Host
                 </Button>
+                <Button color="inherit" component={Link} to="/my-hosts" sx={{ marginLeft: 'auto' }}>
+                    My host
+                </Button>
                 <Button color="inherit" component={Link} to="/top-vehicles-by-unavailable-days" sx={{ marginLeft: 'auto' }}>
                     Top {TOP_LIMIT_VALUE}
                 </Button>

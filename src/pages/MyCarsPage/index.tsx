@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import GlobalLayout from '../../components/GlobalLayout.tsx';
 import {Backdrop, Button, CircularProgress, SelectChangeEvent} from '@mui/material';
 import VehiclesStatisticTable, {VehicleStatistic} from '../../components/VehiclesStatisticTable';
-import {ApiGetStatisticFroGroup} from '../../api/endpoints/get-statistic-for-group.ts';
+import {ApiGetStatisticForGroup} from '../../api/endpoints/get-statistic-for-group.ts';
 import {Link} from 'react-router-dom';
 
 export const TOP_LIMIT_VALUE = 20;
@@ -13,7 +13,7 @@ const MyCarsPage: React.FC = () => {
   const [selectedMonth, setSelectedMonth] = useState<number>(new Date().getMonth() + 1);
 
   const fetchData = async () => {
-    const vehiclesStatistic = await ApiGetStatisticFroGroup(
+    const vehiclesStatistic = await ApiGetStatisticForGroup(
         'My cars',
         selectedYear,
         selectedMonth,

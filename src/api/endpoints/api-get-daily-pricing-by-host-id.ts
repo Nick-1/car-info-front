@@ -1,8 +1,8 @@
 import {api} from "../axios";
 import {convertStatesToQueryString} from '../helpers';
 
-export const ApiGetDailyPricingByGroupId = async (
-  groupId: number,
+export const ApiGetDailyPricingByHostId = async (
+  hostId: number,
   year: number,
   month: number,
   listingEnabled: boolean = false,
@@ -11,7 +11,7 @@ export const ApiGetDailyPricingByGroupId = async (
   const states =  state ? convertStatesToQueryString(state) : '';
   try {
     const response = await api.get<any>(
-      `/api/v1/daily-pricing/group/${groupId}/year/${year}/month/${month}?listingEnabled=${listingEnabled}${states}`
+      `/api/v1/daily-pricing/host/${hostId}/year/${year}/month/${month}?listingEnabled=${listingEnabled}${states}`
     );
     return response.data;
   } catch (error) {
