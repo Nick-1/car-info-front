@@ -37,6 +37,7 @@ const DailyPricingMyHostPage: React.FC = () => {
         setSelectedYear(parseInt(event.target.value as string, 10));
     };
     const handleMonthChange = (event: SelectChangeEvent<number>) => {
+        setData([]);
         setSelectedMonth(parseInt(event.target.value as string, 10));
     };
     const handleListingEnabledChange = (event: React.ChangeEvent<HTMLInputElement>) => {

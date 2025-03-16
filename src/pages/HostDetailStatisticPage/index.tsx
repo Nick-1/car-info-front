@@ -17,7 +17,7 @@ export interface HostDetailStatistic {
 
 const HostDetailStatisticPage: React.FC = () => {
     const { hostId } = useParams();
-    const [data, setData] = useState<HostDetailStatistic>();
+    const [data, setData] = useState<HostDetailStatistic | null>();
     const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
     const [selectedMonth, setSelectedMonth] = useState<number>(new Date().getMonth() + 1);
     const [loading, setLoading] = useState<boolean>(false);
@@ -41,10 +41,12 @@ const HostDetailStatisticPage: React.FC = () => {
     }, [selectedYear, selectedMonth]);
 
     const handleYearChange = (event: SelectChangeEvent<number>) => {
+        setData(null);
         setSelectedYear(parseInt(event.target.value as string, 10));
     };
 
     const handleMonthChange = (event: SelectChangeEvent<number>) => {
+        setData(null);
         setSelectedMonth(parseInt(event.target.value as string, 10));
     };
 

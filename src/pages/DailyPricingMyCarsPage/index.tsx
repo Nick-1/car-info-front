@@ -78,6 +78,7 @@ const DailyPricingMyCarsPage: React.FC = () => {
         setSelectedYear(parseInt(event.target.value as string, 10));
     };
     const handleMonthChange = (event: SelectChangeEvent<number>) => {
+        setData([]);
         setSelectedMonth(parseInt(event.target.value as string, 10));
     };
     const handleStateChange = (event: SelectChangeEvent<string>) => {
