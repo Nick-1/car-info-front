@@ -23,7 +23,7 @@ const statesCanada = [
     { name: 'Ontario', value: 'ON' },
 ];
 
-const getStatesByCounty = (countryCode: CountryCode) => {
+const getStatesByCountry = (countryCode: CountryCode) => {
     switch (countryCode) {
         case CountryCode.US:
             return statesUSA;
@@ -36,7 +36,7 @@ const getStatesByCounty = (countryCode: CountryCode) => {
 
 const StateFilter: React.FC<StateFilterProps> = (props) => {
     const { country, state, onChange } = props;
-    const stateList = getStatesByCounty(country as CountryCode);
+    const stateList = getStatesByCountry(country as CountryCode);
 
     return (
         <FormControl margin="normal">

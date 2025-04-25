@@ -9,12 +9,15 @@ import {ApiGetGroupListByCategoryId} from '../../api/endpoints/api-get-group-lis
 import {ApiGetDailyPricingByGroupId} from '../../api/endpoints/api-get-daily-pricing-by-groupId.ts';
 import StateFilter from '../../components/Filters/StatesFilter.tsx';
 import {ApiGetCategoryByNameAndUserId} from '../../api/endpoints/api-get-category-by-name-and-user-id.ts';
-import { useLocation } from 'react-router-dom';
-import { toCamelCase } from '../../helpers';
+import {useLocation, useParams} from 'react-router-dom';
+import {getCountryCodeByName, toCamelCase} from '../../helpers';
 import FullScreenLoader from '../../components/Loader/FullScreenLoader';
 import './dailyPricingPage.scss';
+import {CountryName} from '../../enums/countries.ts';
 
 const DailyPricingMyCarsPage: React.FC = () => {
+    const { countryName } = useParams();
+    const countryCode = getCountryCodeByName(countryName as CountryName);
     const location = useLocation();
     const userId = Number(localStorage.getItem('userId'));
     const path = location.pathname;
@@ -100,7 +103,7 @@ const DailyPricingMyCarsPage: React.FC = () => {
                 <VehicleGroupFilter activeGroupId={selectedVehicleGroup} groupList={groupList} onChange={handleVehicleChange} />
                 <YearFilter year={selectedYear} onChange={handleYearChange} />
                 <MonthsFilter month={selectedMonth} onChange={handleMonthChange} />
-                <StateFilter state={selectedState} onChange={handleStateChange} />
+                <StateFilter country={countryCode} state={selectedState} onChange={handleStateChange} />
                 <FormControlLabel
                     control={
                         <Checkbox

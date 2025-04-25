@@ -7,8 +7,13 @@ import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import FullScreenLoader from '../../components/Loader/FullScreenLoader';
 import StateFilter, {DEFAULT_STATE} from '../../components/Filters/StatesFilter.tsx';
 import {ApiGetMyHostsList} from '../../api/endpoints/api-get-my-hosts-list.ts';
+import {useParams} from 'react-router-dom';
+import {getCountryCodeByName} from '../../helpers';
+import {CountryName} from '../../enums/countries.ts';
 
 const MyHostListPage: React.FC = () => {
+    const { countryName } = useParams();
+    const countryCode = getCountryCodeByName(countryName as CountryName);
     const [data, setData] = useState<(Host & {vehiclesCount: number, firstVehicleImage: string})[]>();
     const [selectedState, setSelectedState] = useState<string>(DEFAULT_STATE);
 
@@ -72,7 +77,7 @@ const MyHostListPage: React.FC = () => {
     return (
         <GlobalLayout>
             <div className="filters">
-                <StateFilter state={selectedState} onChange={handleStateChange}/>
+                <StateFilter country={countryCode} state={selectedState} onChange={handleStateChange}/>
             </div>
             <>
                 {layout()}
