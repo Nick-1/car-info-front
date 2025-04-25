@@ -4,13 +4,14 @@ import {
     DataGrid,
     GridColDef, GridRenderCellParams,
 } from '@mui/x-data-grid';
+import {useParams} from 'react-router-dom';
 import { toDailyPricing } from './mappers';
 import { generateDaysArray } from './helpers/generate-days-array.ts';
 import {DailyPricingRaw} from './types';
 import {dataGridStyles, rowSpacingStyle} from './styles.tsx';
 import {activeListingColProps, carColProps, dateAndPriceProps} from './renderOptions.tsx';
-import './dailyPrising.scss';
 import {Avatar, Link} from '@mui/material';
+import './dailyPrising.scss';
 
 export interface DailyPricingProps {
     data: DailyPricingRaw[];
@@ -18,27 +19,28 @@ export interface DailyPricingProps {
     month: number;
 }
 
-const photoColProps = {
-    width: 90,
-    renderCell: (params: GridRenderCellParams) => {
-        return (
-            <Box sx={{
-                display: 'flex',
-                alignItems: 'center',
-                width: '100%',
-                height: '100%',
-            }}>
-                <Link href={`/vehicle/${params.row.id}`} target="_blank" rel="noopener noreferrer">
-                    <Avatar src={params.row.photo} />
-                </Link>
-            </Box>
-        )
-    },
-    sortable: false,
-    filterable: false,
-}
-
 const DailyPricingGrid: React.FC<DailyPricingProps> = (props) => {
+    const { countryName } = useParams();
+    const photoColProps = {
+        width: 90,
+        renderCell: (params: GridRenderCellParams) => {
+            return (
+                <Box sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    width: '100%',
+                    height: '100%',
+                }}>
+                    <Link href={`/${countryName}/vehicle/${params.row.id}`} target="_blank" rel="noopener noreferrer">
+                        <Avatar src={params.row.photo} />
+                    </Link>
+                </Box>
+            )
+        },
+        sortable: false,
+        filterable: false,
+    }
+
     const { data, year, month } = props;
     const mappedData = toDailyPricing(data);
 

@@ -15,6 +15,7 @@ import GlobalLayout from '../GlobalLayout.tsx';
 import React from 'react';
 import {Vehicle} from '../../interfaces/vehicle.ts';
 import FullScreenLoader from '../Loader/FullScreenLoader';
+import {useParams} from 'react-router-dom';
 
 export interface VehicleStatistic {
     vehicle: Vehicle;
@@ -36,6 +37,7 @@ interface VehicleStatisticTableProps {
 }
 
 const VehicleStatisticTable: React.FC<VehicleStatisticTableProps> = (props) => {
+    const { countryName } = useParams();
     const { data, onYearChange,  onMonthChange, yearValue, monthValue} = props;
     const listingAvailableColProps = {
         renderCell: (params: GridRenderCellParams) => (
@@ -70,7 +72,7 @@ const VehicleStatisticTable: React.FC<VehicleStatisticTableProps> = (props) => {
                     width: '100%',
                     height: '100%',
                 }}>
-                    <Link href={`/vehicle/${params.row.id}`} target="_blank" rel="noopener noreferrer">
+                    <Link href={`/${countryName}/vehicle/${params.row.id}`} target="_blank" rel="noopener noreferrer">
                         <Avatar src={params.row.photo} />
                     </Link>
                 </Box>

@@ -16,6 +16,7 @@ export interface HostDetailStatistic {
 }
 
 const HostDetailStatisticPage: React.FC = () => {
+    const { countryName } = useParams();
     const { hostId } = useParams();
     const [data, setData] = useState<HostDetailStatistic | null>();
     const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
@@ -74,7 +75,7 @@ const HostDetailStatisticPage: React.FC = () => {
                     startIcon={<MultilineChartIcon />}
                     component={Link}
                     variant="contained"
-                    to={`/daily-pricing/host/${hostId}`}
+                    to={`/${countryName}/daily-pricing/host/${hostId}`}
                     style={{ marginTop: 20 }}
                 >
                     Daily Pricing

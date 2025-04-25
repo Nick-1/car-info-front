@@ -1,21 +1,42 @@
 import React from 'react';
 import {FormControl, InputLabel, MenuItem, Select, SelectChangeEvent} from '@mui/material';
+import {CountryCode} from '../../enums/countries.ts';
 
 export interface StateFilterProps {
+    country: string,
     state: string,
     onChange: (state: SelectChangeEvent<string>) => void,
 }
 export const DEFAULT_STATE = 'ALL';
 
-const statesInEnglish = [
+const statesUSA = [
     { name: 'All States', value: DEFAULT_STATE },
     { name: 'Florida', value: 'FL' },
     { name: 'California', value: 'CA' },
     { name: 'New York', value: 'NY' },
 ];
 
+const statesCanada = [
+    { name: 'All States', value: DEFAULT_STATE },
+    { name: 'Alberta', value: 'AB' },
+    { name: 'British Columbia', value: 'BC' },
+    { name: 'Ontario', value: 'ON' },
+];
+
+const getStatesByCounty = (countryCode: CountryCode) => {
+    switch (countryCode) {
+        case CountryCode.US:
+            return statesUSA;
+        case CountryCode.CA:
+            return statesCanada;
+        default:
+            return statesCanada;
+    }
+}
+
 const StateFilter: React.FC<StateFilterProps> = (props) => {
-    const {state: state, onChange } = props;
+    const { country, state, onChange } = props;
+    const stateList = getStatesByCounty(country as CountryCode);
 
     return (
         <FormControl margin="normal">
@@ -25,9 +46,9 @@ const StateFilter: React.FC<StateFilterProps> = (props) => {
                 value={state}
                 onChange={onChange}
                 label="State"
-                defaultValue={'CA'}
+                defaultValue={''}
             >
-                {statesInEnglish.map((stateOption) => (
+                {stateList.map((stateOption) => (
                     <MenuItem key={stateOption.value} value={stateOption.value}>
                         {stateOption.name}
                     </MenuItem>

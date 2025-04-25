@@ -1,9 +1,11 @@
 import React, { useState, FormEvent } from 'react';
 import { Button, TextField, Container, Box, Typography } from '@mui/material';
 import axios from 'axios';
+import {CountryName} from '../../enums/countries.ts';
+import {getCountryNameByCode} from '../../helpers';
 
 interface LoginFormProps {
-  onLoginSuccess: (token: string) => void;
+  onLoginSuccess: (token: string, country: CountryName) => void;
 }
 
 const baseNestUrl = import.meta.env.VITE_BASE_NEST_URL;
@@ -24,11 +26,13 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
 
       const token = response.data.token;
       const userId = response.data.id;
+      const countryCode = response.data.country;
 
       localStorage.setItem('authToken', token);
       localStorage.setItem('userId', userId);
+      localStorage.setItem('country', countryCode);
 
-      onLoginSuccess(token);
+      onLoginSuccess(token, getCountryNameByCode(countryCode));
     } catch (err) {
       if (axios.isAxiosError(err) && err.response) {
         setError(err.response.data.error || 'Incorrect login or password');

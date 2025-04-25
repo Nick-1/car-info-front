@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { useParams } from 'react-router-dom';
 import {Host} from '../../interfaces/host.ts';
 import {ApiGetHostsListByUserId} from '../../api/endpoints/api-get-hosts-list-by-user-id.ts';
 import GlobalLayout from '../../components/GlobalLayout.tsx';
@@ -7,20 +8,25 @@ import Typography from '@mui/material/Typography';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import FullScreenLoader from '../../components/Loader/FullScreenLoader';
 import StateFilter, {DEFAULT_STATE} from '../../components/Filters/StatesFilter.tsx';
+import {getCountryCodeByName} from '../../helpers';
+import {CountryName} from '../../enums/countries.ts';
+
 
 const HostsListPage: React.FC = () => {
+    const { countryName } = useParams();
+    const countryCode = getCountryCodeByName(countryName as CountryName);
     const [data, setData] = useState<(Host & {vehiclesCount: number, firstVehicleImage: string})[]>();
     const [selectedState, setSelectedState] = useState<string>(DEFAULT_STATE);
 
     const fetchData = async () => {
-        const data = await ApiGetHostsListByUserId(selectedState);
+        const data = await ApiGetHostsListByUserId(selectedState, countryCode);
 
         setData(data);
     }
 
     useEffect(() => {
         fetchData();
-    }, [selectedState]);
+    }, [countryCode, selectedState]);
 
     const handleStateChange = (event: SelectChangeEvent<string>) => {
         setSelectedState(event.target.value);
@@ -34,7 +40,7 @@ const HostsListPage: React.FC = () => {
                 {data.map((item) => (
                     <Grid item key={item.id} xs={12} sm={6} md={4} lg={3}>
                         <Link
-                            href={`host/${item.id}`}
+                            href={`${countryName}/host/${item.id}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             underline="none"
@@ -72,7 +78,7 @@ const HostsListPage: React.FC = () => {
     return (
         <GlobalLayout>
             <div className="filters">
-                <StateFilter state={selectedState} onChange={handleStateChange}/>
+                <StateFilter country={countryCode} state={selectedState} onChange={handleStateChange}/>
             </div>
             <>
                 {layout()}
