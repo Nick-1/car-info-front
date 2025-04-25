@@ -3,10 +3,15 @@ import {ApiGetTopVehiclesByUnavailableDays} from '../../api/endpoints/get-top-ve
 import GlobalLayout from '../../components/GlobalLayout.tsx';
 import {Backdrop, CircularProgress, SelectChangeEvent} from '@mui/material';
 import VehiclesStatisticTable, {VehicleStatistic} from '../../components/VehiclesStatisticTable';
+import {useParams} from 'react-router-dom';
+import {getCountryCodeByName} from '../../helpers';
+import {CountryName} from '../../enums/countries.ts';
 
 export const TOP_LIMIT_VALUE = 20;
 
 const TopVehiclesListPage: React.FC = () => {
+  const { countryName } = useParams();
+  const countryCode = getCountryCodeByName(countryName as CountryName);
   const [data, setData] = useState<VehicleStatistic[]>([]);
   const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear());
   const [selectedMonth, setSelectedMonth] = useState<number>(new Date().getMonth() + 1);
@@ -15,6 +20,7 @@ const TopVehiclesListPage: React.FC = () => {
     const vehiclesStatistic = await ApiGetTopVehiclesByUnavailableDays(
         selectedYear,
         selectedMonth,
+        countryCode,
         25,
         TOP_LIMIT_VALUE,
     );
