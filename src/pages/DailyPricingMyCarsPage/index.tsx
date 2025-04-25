@@ -21,7 +21,7 @@ const DailyPricingMyCarsPage: React.FC = () => {
     const location = useLocation();
     const userId = Number(localStorage.getItem('userId'));
     const path = location.pathname;
-    const categoryUrl = path.split('/')[1];
+    const categoryUrl = path.split('/')[2];
     const CATEGORY_NAME = categoryUrl ? toCamelCase(categoryUrl) : 'dailyPricingMyCars';
 
     const [categoryId, setCategoryId] = useState<number | null>(null);
